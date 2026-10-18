@@ -14,7 +14,7 @@ Built for Graph Hacks: Context for AI Agents. Entry track: **Track 01, Agents Th
 | Required graph queries | The two executable Cypher queries below; implementation in [prototype_engine.py](prototype_engine.py) and [run_gate.py](run_gate.py) |
 | Entry track | Track 01: Agents That Act on Connected Data |
 | AI assistance disclosure | [Credits and AI disclosure](#credits-and-ai-disclosure) |
-| Working demo video | **Pending recording and upload. A public video link must be added before submission.** |
+| Working demo video | [Watch the recorded demonstration on YouTube](https://youtu.be/a2fsXE6GVNk) (Unlisted; anyone with the link can watch once processing completes) |
 
 The [official submission rules](https://www.wemakedevs.org/hackathons/falkordb/rules) were checked on October 18, 2026. They require a README with setup and graph model, the graph queries or algorithms, a working demo video, the entry track, and either a live deployment or complete local setup. They also require disclosure of AI coding assistance. No specific README template is prescribed on that page.
 
@@ -165,4 +165,4 @@ TodoMVC and bundled fonts retain their licenses and attribution. See [THIRD_PART
 
 See [the four-minute narration](DEMO_SCRIPT_4_MINUTES.md), [recording guide](RECORDING_GUIDE.md), and [demo/reliability plan](DEMO_AND_RELIABILITY.md).
 
-The demo video still needs to be recorded and uploaded. This repository provides complete local setup and does not claim a public hosted deployment. A localhost address is not a public demo URL.
+Watch the [recorded working demo](https://youtu.be/a2fsXE6GVNk). This repository provides complete local setup and does not claim a public hosted deployment. A localhost address is not a public demo URL.
