@@ -1,0 +1,15 @@
+{
+  "features": [
+    {
+      "id": "tasks",
+      "module": "tasks.js",
+      "seed": "#seed-tasks",
+      "observe": "#tasks li"
+    },
+    {
+      "id": "notes",
+      "module": "notes.js",
+      "trigger": "#save-note"
+    }
+  ]
+}

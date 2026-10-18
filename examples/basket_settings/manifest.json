@@ -1,0 +1,18 @@
+{
+  "features": [
+    {
+      "id": "shopping-basket",
+      "module": "basket.js",
+      "seed": "#add-items",
+      "observe": "#basket li"
+    },
+    {
+      "id": "appearance",
+      "module": "appearance.js",
+      "trigger": [
+        "#change-color",
+        "#save-settings"
+      ]
+    }
+  ]
+}

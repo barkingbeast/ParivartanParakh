@@ -1,0 +1,8 @@
+{
+  "repository": "https://github.com/tastejs/todomvc",
+  "commit": "d69828232d2ab3881d33d41d3a4df4ed7947c7d7",
+  "tag": "1.3.1",
+  "example": "examples/vanilla-es6",
+  "bundle_sha256": "17cda14a7131c96f5f47b8edfa7d2d877074df6fdd85ef0a1c10668f5f776ebc",
+  "disclosure": "Upstream application bundle is unchanged. Asset paths and lab UI are adapted. The focus extension and its faulty/fixed revisions are authored locally; this is a controlled injected regression, not an upstream defect discovery."
+}

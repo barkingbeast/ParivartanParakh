@@ -1,0 +1,47 @@
+{
+  "features": [
+    {
+      "id": "saved-tasks",
+      "module": "bundle.js",
+      "seed": [
+        {
+          "type": "fill",
+          "selector": ".new-todo",
+          "value": "Prepare hackathon demo"
+        },
+        {
+          "type": "press",
+          "selector": ".new-todo",
+          "key": "Enter"
+        },
+        {
+          "type": "fill",
+          "selector": ".new-todo",
+          "value": "Submit project"
+        },
+        {
+          "type": "press",
+          "selector": ".new-todo",
+          "key": "Enter"
+        },
+        {
+          "type": "check",
+          "selector": ".todo-list li:nth-child(1) .toggle"
+        }
+      ],
+      "observe": ".todo-list li",
+      "observe_attributes": [
+        "class"
+      ],
+      "observe_normalize_whitespace": true
+    },
+    {
+      "id": "focus-view",
+      "module": "focus-view.js",
+      "trigger": [
+        "#preview-focus",
+        "#save-focus"
+      ]
+    }
+  ]
+}
