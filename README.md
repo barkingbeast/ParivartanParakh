@@ -4,6 +4,20 @@ Check whether an older workflow survives a new change. Record a developer-approv
 
 Built for Graph Hacks: Context for AI Agents. Entry track: **Track 01, Agents That Act on Connected Data**.
 
+## For judges
+
+| Submission item | Where to find it |
+|---|---|
+| Public source | [barkingbeast/ParivartanParakh](https://github.com/barkingbeast/ParivartanParakh) |
+| Setup instructions | [Local setup](#local-setup); this is a local application, not a hosted deployment |
+| Graph data model | [Architecture and graph model](#architecture-and-graph-model) |
+| Required graph queries | The two executable Cypher queries below; implementation in [prototype_engine.py](prototype_engine.py) and [run_gate.py](run_gate.py) |
+| Entry track | Track 01: Agents That Act on Connected Data |
+| AI assistance disclosure | [Credits and AI disclosure](#credits-and-ai-disclosure) |
+| Working demo video | **Pending recording and upload. A public video link must be added before submission.** |
+
+The [official submission rules](https://www.wemakedevs.org/hackathons/falkordb/rules) were checked on October 18, 2026. They require a README with setup and graph model, the graph queries or algorithms, a working demo video, the entry track, and either a live deployment or complete local setup. They also require disclosure of AI coding assistance. No specific README template is prescribed on that page.
+
 ## The demonstration
 
 An added focus view saves only unfinished tasks over the original task store. Completed tasks disappear on reload. The pinned TodoMVC bundle is unchanged; the focus extension and deliberately introduced regression are ours. This is a controlled demonstration, not a defect discovered in upstream TodoMVC. A separate shopping-basket example exercises the same mechanism with different data.
@@ -35,13 +49,14 @@ The database viewer is at http://localhost:3000/. Its local connection uses host
 
 ## Workflow
 
-1. Choose TodoMVC injected regression and click Record a workflow instead.
-2. Create two tasks in the old preview, complete one, and select the task rows to protect.
-3. Continue to the changed feature. Use its preview and save controls, then request a preservation rule.
-4. Review and explicitly approve the captured values and checkbox states. Save and investigate it with local-agent mode enabled.
-5. Inspect the missing task, dependency path, graph stages and actual agent tool trail. Export a repair brief if needed.
-6. From the failing report, verify TodoMVC compatible revision against the retained case.
-7. Open the ORIGINAL failure in the regression library and supply the broken revision again. The case should return NOT FIXED.
+1. Choose **TodoMVC · injected regression**, keep **Use local investigation agent** checked, and click **Record a workflow instead**.
+2. In the white preview, enter `Prepare hackathon demo` and press Enter. Enter `Submit project` and press Enter. Check the circle beside the first task to complete it.
+3. Click **Select behavior to protect**, then click a task's text. Confirm that two rows were selected and click **Continue to changed feature →**. Do not refresh the dashboard during recording; the investigation performs the reload checks.
+4. In the preview's controlled-modification panel, click **Preview focus color**, then **Save focus view**. Click **Suggest preservation rule →** above the preview.
+5. Confirm that both task titles and their original checkbox states are in the proposed expectation. Name the workflow, tick the explicit confirmation, and click **Approve and save workflow**. Click **Investigate this approved workflow ↗**.
+6. Inspect **REGRESSION REPRODUCED**, the missing completed task, **Why these checks?**, and **Agent tool trail**. In **How the graph changed**, click **Open this run in FalkorDB ↗** and press the viewer's **Run** button. Export the repair brief if needed.
+7. From the failing report, find **Verify a supplied repair**. Under **Supplied revision**, choose **TodoMVC · compatible revision** and click **Replay retained failure against repair →**. Expect **VERIFIED FOR RETAINED CASE** with the original data, rule and actions reused.
+8. Open the ORIGINAL failure in the regression library and supply **TodoMVC · injected regression** again. The retained case should return **NOT FIXED**. Repair replay is explicitly invoked; the library does not automatically monitor later edits.
 
 The tool verifies a supplied repair. It does not write one. A passing result applies only to the executed case and supplied revision.
 
@@ -66,6 +81,15 @@ Module --IMPLEMENTS--> Feature
 RegressionCase --REQUIRES_REPLAY--> Feature
 ```
 
+| Node | Meaning | Identifier / selection property |
+|---|---|---|
+| `Module` | JavaScript module attributed an exercised storage operation | `id`; `changed` marks modules changed between the two builds |
+| `StorageKey` | A native localStorage key observed at runtime | `id`, such as `todos-vanilla-es6` |
+| `Feature` | A declared or approved behavior with a browser check | `id`, such as `saved-tasks` or `protected-behavior` |
+| `RegressionCase` | An original failing case being verified against a supplied revision | `id`; its edge requires replay of the associated feature |
+
+`WRITES` and `READS` come from exercised storage operations. `IMPLEMENTS` associates a reader module with the declared check. Repair investigations add `REQUIRES_REPLAY` from the retained case. Each investigation has a named graph; the report links to that graph. Run artifacts and repair history are also persisted locally on disk.
+
 Impact-selection query:
 
 ```cypher
@@ -84,6 +108,12 @@ RETURN DISTINCT f.id ORDER BY f.id
 Actual Cypher results supply eligible check targets. The repair graph retains the obligation to replay the original failure even when its current dependency disappears. Missing required graph evidence or database outages prevent successful verification. There is no silent Python dependency-selection fallback.
 
 The graph identifies a reason to test. Browser observations establish failure. It does not discover paths that were never exercised.
+
+### Why FalkorDB is central
+
+The agent's eligible targets come from actual Cypher results, not the graph picture. Removing the read relationships removes the impact-selection path. Retained-case verification also queries FalkorDB for mandatory replay targets, so a changed dependency cannot silently erase a previously failing obligation. If required graph evidence is missing, verification cannot claim success. The UI includes **Evidence integrity control → Remove graph read edges before selection** as an explicit negative control; it is off for the normal demo.
+
+This small example could be implemented with other relationship representations. The claim here is that this implementation uses FalkorDB as the authoritative selection layer, not that a graph database is the only possible solution or that performance superiority has been benchmarked.
 
 ## Algorithms and AI
 
