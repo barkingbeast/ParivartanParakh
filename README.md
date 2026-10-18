@@ -4,6 +4,8 @@ Check whether an older workflow survives a new change. Record a developer-approv
 
 Built for Graph Hacks: Context for AI Agents. Entry track: **Track 01, Agents That Act on Connected Data**.
 
+Read the build story: [The new feature worked. My completed task disappeared.](BLOG.md)
+
 ## For judges
 
 | Submission item | Where to find it |
